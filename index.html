@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="CROWD FUNNING — many ideas become one." />
-  <title>CROWD FUNNING Invite v1.1.1</title>
+  <title>CROWD FUNNING Invite v1.1.2</title>
   <style>
     :root{
       --bg:#030306;
@@ -36,7 +36,7 @@
     @keyframes flicker{50%{opacity:.07}}
 
     .app{height:100%;display:grid;place-items:center;padding:22px;position:relative}
-    .brand{position:fixed;top:max(18px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);letter-spacing:.28em;font-size:11px;font-weight:900;color:rgba(255,255,255,.62);z-index:5;white-space:nowrap}.brand span{color:#fff;text-shadow:0 0 18px rgba(52,233,255,.35)}
+    .brand{position:fixed;top:max(34px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);letter-spacing:.30em;font-size:clamp(15px,3.2vw,22px);font-weight:950;color:rgba(255,255,255,.78);z-index:5;white-space:nowrap;text-shadow:0 0 22px rgba(255,61,242,.20)}.brand span{color:#fff;text-shadow:0 0 22px rgba(52,233,255,.45)}
     .version{position:fixed;right:16px;bottom:max(12px,env(safe-area-inset-bottom));font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.28);z-index:5}
     .enter-now{position:fixed;right:14px;top:max(14px,env(safe-area-inset-top));z-index:7;text-decoration:none;color:rgba(255,255,255,.88);font-size:10px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:10px 12px;background:rgba(0,0,0,.28);backdrop-filter:blur(14px);box-shadow:0 0 18px rgba(52,233,255,.08);transition:.2s}
     .enter-now:hover{border-color:rgba(52,233,255,.45);box-shadow:0 0 24px rgba(52,233,255,.18)}
@@ -60,14 +60,14 @@
     .choices{display:grid;gap:12px;margin-top:23px}.choice{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:16px;background:rgba(255,255,255,.055);text-decoration:none;color:#fff;transition:.2s}.choice:hover{transform:translateY(-1px);border-color:rgba(52,233,255,.35);background:rgba(52,233,255,.07)}.choice strong{font-size:14px;letter-spacing:.08em}.choice span{font-size:12px;color:var(--muted)}.arrow{font-size:22px;color:var(--cyan);text-shadow:0 0 16px rgba(52,233,255,.45)}
     .repo-note{margin-top:18px;border-top:1px solid rgba(255,255,255,.08);padding-top:14px;color:rgba(255,255,255,.38);font-size:11px;line-height:1.4;text-align:center}
 
-    @media(max-width:480px){.enter-now{left:50%;right:auto;top:auto;bottom:calc(max(12px,env(safe-area-inset-bottom)) + 26px);transform:translateX(-50%);white-space:nowrap}.version{display:none}.steps{bottom:max(13px,env(safe-area-inset-bottom))}.panel{padding:30px 20px 22px}.brand{font-size:10px}}
-    @media(max-height:720px){.panel{padding:25px 20px 20px}.shell{min-height:calc(100vh - 46px)}p{font-size:14px}.artifact{margin-top:15px}.actions{margin-top:18px}.brand{top:12px}.steps{display:none}}
+    @media(max-width:480px){.enter-now{left:50%;right:auto;top:auto;bottom:calc(max(12px,env(safe-area-inset-bottom)) + 26px);transform:translateX(-50%);white-space:nowrap}.version{display:none}.steps{bottom:max(13px,env(safe-area-inset-bottom))}.panel{padding:30px 20px 22px}.brand{top:max(28px,env(safe-area-inset-top));font-size:14px;letter-spacing:.22em}}
+    @media(max-height:720px){.panel{padding:25px 20px 20px}.shell{min-height:calc(100vh - 46px)}p{font-size:14px}.artifact{margin-top:15px}.actions{margin-top:18px}.brand{top:18px}.steps{display:none}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}canvas{opacity:.25}}
   </style>
 </head>
 <body>
   <!--
-    CROWD FUNNING Invite v1.1.1
+    CROWD FUNNING Invite v1.1.2
     Recommended GitHub repository structure:
 
     Crowd-Funning-Invite/
@@ -83,12 +83,11 @@
   <div class="noise" aria-hidden="true"></div>
   <div class="brand">CROWD <span>FUNNING</span></div>
   <a class="enter-now engine-link" href="https://ideaordie.github.io/Crowd-Funning/">Skip intro → Start developing</a>
-  <div class="version">v1.1.1</div>
+  <div class="version">v1.1.2</div>
 
   <main class="app" aria-live="polite">
     <section class="shell" aria-label="CROWD FUNNING invite journey">
       <article class="panel active" data-panel="0">
-        <div class="eyebrow">Invite</div>
         <h1 class="glow">MANY IDEAS<br>BECOME ONE</h1>
         <p>Strangers build evolving paths from a single spark. The best continuations survive. The strangest outcomes become artifacts.</p>
         <div class="mini" aria-hidden="true"><div><b>1</b>Start</div><div><b>∞</b>Branch</div><div><b>1</b>Evolve</div></div>
@@ -96,7 +95,6 @@
       </article>
 
       <article class="panel" data-panel="1">
-        <div class="eyebrow">Example Path</div>
         <h2>One foundation mutates.</h2>
         <div class="artifact">
           <div class="seed">A restaurant where every waiter is legally required to lie.</div>
@@ -113,7 +111,6 @@
       </article>
 
       <article class="panel" data-panel="2">
-        <div class="eyebrow">Invitation</div>
         <h2>Nobody knows where the idea ends.</h2>
         <p>Start a foundation, continue a branch, or explore what the crowd has already completed.</p>
         <div class="choices">
@@ -130,7 +127,7 @@
   </main>
 
   <script>
-    /* CROWD FUNNING Invite v1.1.1
+    /* CROWD FUNNING Invite v1.1.2
        Change this one value when the production engine URL changes. */
     const ENGINE_URL = 'https://ideaordie.github.io/Crowd-Funning/';
 
