@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="CROWD FUNNING — many ideas become one." />
-  <title>CROWD FUNNING Invite v1.2.8</title>
+  <title>CROWD FUNNING Invite v1.2.9</title>
   <style>
     :root{
       --bg:#030306;
@@ -89,7 +89,7 @@ button:first-child,
 </head>
 <body>
   <!--
-    CROWD FUNNING Invite v1.2.8
+    CROWD FUNNING Invite v1.2.9
     Recommended GitHub repository structure:
 
     Crowd-Funning-Invite/
@@ -105,7 +105,7 @@ button:first-child,
   <div class="noise" aria-hidden="true"></div>
   <div class="brand">CROWD <span>FUNNING</span></div>
   <a class="enter-now engine-link" href="https://ideaordie.github.io/Crowd-Funning/">Skip intro → Start developing</a>
-  <div class="version">v1.2.8</div>
+  <div class="version">v1.2.9</div>
 
   <main class="app" aria-live="polite">
     <section class="shell" aria-label="CROWD FUNNING invite journey">
@@ -197,7 +197,7 @@ button:first-child,
   </main>
 
   <script>
-    /* CROWD FUNNING Invite v1.2.8
+    /* CROWD FUNNING Invite v1.2.9
        Change this one value when the production engine URL changes. */
     const ENGINE_URL = 'https://ideaordie.github.io/Crowd-Funning/';
 
@@ -748,7 +748,7 @@ a.primary,
 
 
 <style>
-/* v1.2.8 — animated foundation → branching → survival → final result */
+/* v1.2.9 — animated foundation → branching → survival → final result */
 .mutation-stage{
   width:100%;
   max-width:760px;
@@ -1021,7 +1021,7 @@ a.primary,
 
 
 <style>
-/* v1.2.8 direct replacement: foundation → branch → shed → branch → result */
+/* v1.2.9 direct replacement: foundation → branch → shed → branch → result */
 .mutation-demo-v126{
   width:100%;
   max-width:760px;
@@ -1248,7 +1248,7 @@ a.primary,
 
 
 <style>
-/* v1.2.8 contained second-page branching animation */
+/* v1.2.9 contained second-page branching animation */
 .contained-branch-demo{
   width:100%;
   max-width:680px;
@@ -1465,7 +1465,7 @@ a.primary,
 
 
 <style>
-/* v1.2.8 — keep page 2 panel compact and scale animation inside it */
+/* v1.2.9 — keep page 2 panel compact and scale animation inside it */
 .panel:has(.contained-branch-demo){
   max-height:560px !important;
   min-height:0 !important;
@@ -1550,6 +1550,110 @@ a.primary,
   .contained-branch-demo{
     transform:scale(.76);
     margin-bottom:-88px !important;
+  }
+}
+</style>
+
+
+<style>
+/* v1.2.9 — smaller/faster second-page animation with longer readable final result */
+.panel:has(.contained-branch-demo){
+  max-height:540px !important;
+  padding-top:30px !important;
+  padding-bottom:28px !important;
+}
+
+.contained-branch-demo{
+  transform:scale(.69) !important;
+  transform-origin:top center !important;
+  height:335px !important;
+  max-height:335px !important;
+  margin-top:0 !important;
+  margin-bottom:-96px !important;
+  gap:5px !important;
+}
+
+.contained-foundation,
+.contained-result{
+  padding:11px 15px !important;
+}
+
+.contained-animation-window{
+  height:198px !important;
+  flex-basis:198px !important;
+  width:min(100%,500px) !important;
+}
+
+/* Shorten every branch animation to 75% of previous time */
+.contained-animation-window,
+.contained-result,
+.cb-root,
+.cb-left-one,
+.cb-right-one,
+.cb-survivor,
+.cb-left-two,
+.cb-right-two,
+.cb-final,
+.bulb-root,
+.bulb-left-one,
+.bulb-right-one,
+.bulb-left-two,
+.bulb-right-two{
+  animation-duration:6.9s !important;
+}
+
+/* Redefine only the final result timing so it stays readable for about 2 seconds */
+@keyframes containedResult{
+  0%,62%{
+    opacity:0;
+    transform:translateY(10px) scale(.98);
+  }
+  70%,94%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+  100%{
+    opacity:0;
+    transform:translateY(-8px) scale(.99);
+  }
+}
+
+/* Let the final branch arrive slightly earlier so it supports the longer result hold */
+@keyframes cbFinal{
+  0%,58%{opacity:0;stroke-dashoffset:600}
+  68%,94%{opacity:1;stroke-dashoffset:0}
+  100%{opacity:0;stroke-dashoffset:0}
+}
+
+@media(max-width:620px){
+  .panel:has(.contained-branch-demo){
+    max-height:520px !important;
+    padding-top:28px !important;
+    padding-bottom:26px !important;
+  }
+
+  .contained-branch-demo{
+    transform:scale(.66) !important;
+    height:328px !important;
+    max-height:328px !important;
+    margin-bottom:-106px !important;
+  }
+
+  .contained-animation-window{
+    height:192px !important;
+    flex-basis:192px !important;
+    width:min(100%,380px) !important;
+  }
+
+  .contained-result{
+    margin-top:-2px !important;
+  }
+}
+
+@media(max-height:760px){
+  .contained-branch-demo{
+    transform:scale(.62) !important;
+    margin-bottom:-126px !important;
   }
 }
 </style>
