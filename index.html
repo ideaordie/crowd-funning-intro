@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="CROWD FUNNING — many ideas become one." />
-  <title>CROWD FUNNING Invite v1.2.2</title>
+  <title>CROWD FUNNING Invite v1.2.3</title>
   <style>
     :root{
       --bg:#030306;
@@ -89,7 +89,7 @@ button:first-child,
 </head>
 <body>
   <!--
-    CROWD FUNNING Invite v1.2.2
+    CROWD FUNNING Invite v1.2.3
     Recommended GitHub repository structure:
 
     Crowd-Funning-Invite/
@@ -105,7 +105,7 @@ button:first-child,
   <div class="noise" aria-hidden="true"></div>
   <div class="brand">CROWD <span>FUNNING</span></div>
   <a class="enter-now engine-link" href="https://ideaordie.github.io/Crowd-Funning/">Skip intro → Start developing</a>
-  <div class="version">v1.2.2</div>
+  <div class="version">v1.2.3</div>
 
   <main class="app" aria-live="polite">
     <section class="shell" aria-label="CROWD FUNNING invite journey">
@@ -166,7 +166,7 @@ button:first-child,
   </main>
 
   <script>
-    /* CROWD FUNNING Invite v1.2.2
+    /* CROWD FUNNING Invite v1.2.3
        Change this one value when the production engine URL changes. */
     const ENGINE_URL = 'https://ideaordie.github.io/Crowd-Funning/';
 
@@ -336,6 +336,163 @@ a.primary,
 .primary,
 .begin{
   animation:ctaGradientDrift 6.5s ease-in-out infinite !important;
+}
+</style>
+
+
+<style>
+.path-sim{
+  width:100%;
+  max-width:650px;
+  margin:6px auto 0;
+  min-height:440px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:14px;
+}
+
+.sim-row{
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.sim-card{
+  width:100%;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.055);
+  border-radius:20px;
+  padding:14px 16px;
+  box-shadow:
+    0 0 24px rgba(255,61,242,.10),
+    inset 0 0 22px rgba(255,255,255,.025);
+  backdrop-filter:blur(14px);
+  opacity:0;
+  transform:translateY(12px) scale(.97);
+  animation-duration:10s;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+}
+
+.sim-label{
+  font-size:10px;
+  letter-spacing:.24em;
+  font-weight:900;
+  color:rgba(52,233,255,.84);
+  margin-bottom:8px;
+}
+
+.sim-text{
+  color:#fff;
+  font-size:clamp(13px,2vw,16px);
+  line-height:1.35;
+}
+
+.foundation-card{
+  max-width:470px;
+  animation-name:simFoundation;
+}
+
+.first-branches{
+  opacity:1;
+}
+
+.branch-left{
+  animation-name:simBranchLeft;
+}
+
+.branch-right{
+  animation-name:simBranchRightLose;
+}
+
+.survivor-card{
+  max-width:520px;
+  animation-name:simSurvivor;
+}
+
+.second-left{
+  animation-name:simSecondLeftLose;
+}
+
+.second-right{
+  animation-name:simSecondRight;
+}
+
+.result-card{
+  max-width:560px;
+  border-color:rgba(52,233,255,.28);
+  box-shadow:
+    0 0 30px rgba(52,233,255,.16),
+    0 0 44px rgba(255,61,242,.12),
+    inset 0 0 22px rgba(255,255,255,.03);
+  animation-name:simResult;
+}
+
+@keyframes simFoundation{
+  0%{opacity:0;transform:translateY(14px) scale(.97)}
+  7%,92%{opacity:1;transform:translateY(0) scale(1)}
+  100%{opacity:0;transform:translateY(-8px) scale(.98)}
+}
+
+@keyframes simBranchLeft{
+  0%,12%{opacity:0;transform:translate(-18px,10px) scale(.96)}
+  18%,35%{opacity:1;transform:translate(0,0) scale(1)}
+  43%,100%{opacity:0;transform:translateY(-8px) scale(.96)}
+}
+
+@keyframes simBranchRightLose{
+  0%,15%{opacity:0;transform:translate(18px,10px) scale(.96)}
+  21%,35%{opacity:1;transform:translate(0,0) scale(1)}
+  43%,100%{opacity:0;transform:translate(16px,-8px) scale(.9)}
+}
+
+@keyframes simSurvivor{
+  0%,38%{opacity:0;transform:translateY(12px) scale(.97)}
+  45%,58%{opacity:1;transform:translateY(0) scale(1)}
+  66%,100%{opacity:0;transform:translateY(-8px) scale(.96)}
+}
+
+@keyframes simSecondLeftLose{
+  0%,56%{opacity:0;transform:translate(-18px,10px) scale(.96)}
+  62%,75%{opacity:1;transform:translate(0,0) scale(1)}
+  82%,100%{opacity:0;transform:translate(-16px,-8px) scale(.9)}
+}
+
+@keyframes simSecondRight{
+  0%,59%{opacity:0;transform:translate(18px,10px) scale(.96)}
+  65%,78%{opacity:1;transform:translate(0,0) scale(1)}
+  86%,100%{opacity:0;transform:translateY(-8px) scale(.96)}
+}
+
+@keyframes simResult{
+  0%,78%{opacity:0;transform:translateY(14px) scale(.97)}
+  86%,94%{opacity:1;transform:translateY(0) scale(1)}
+  100%{opacity:0;transform:translateY(-8px) scale(.98)}
+}
+
+@media(max-width:560px){
+  .path-sim{
+    min-height:500px;
+    gap:12px;
+  }
+  .sim-row{
+    gap:10px;
+  }
+  .sim-card{
+    padding:12px 11px;
+    border-radius:16px;
+  }
+  .sim-label{
+    font-size:9px;
+    letter-spacing:.18em;
+  }
+  .sim-text{
+    font-size:12.5px;
+  }
 }
 </style>
 
