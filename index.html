@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="CROWD FUNNING — many ideas become one." />
-  <title>CROWD FUNNING Invite v1.2.9</title>
+  <title>CROWD FUNNING Invite v1.3.0</title>
   <style>
     :root{
       --bg:#030306;
@@ -89,7 +89,7 @@ button:first-child,
 </head>
 <body>
   <!--
-    CROWD FUNNING Invite v1.2.9
+    CROWD FUNNING Invite v1.3.0
     Recommended GitHub repository structure:
 
     Crowd-Funning-Invite/
@@ -105,7 +105,7 @@ button:first-child,
   <div class="noise" aria-hidden="true"></div>
   <div class="brand">CROWD <span>FUNNING</span></div>
   <a class="enter-now engine-link" href="https://ideaordie.github.io/Crowd-Funning/">Skip intro → Start developing</a>
-  <div class="version">v1.2.9</div>
+  <div class="version">v1.3.0</div>
 
   <main class="app" aria-live="polite">
     <section class="shell" aria-label="CROWD FUNNING invite journey">
@@ -197,7 +197,7 @@ button:first-child,
   </main>
 
   <script>
-    /* CROWD FUNNING Invite v1.2.9
+    /* CROWD FUNNING Invite v1.3.0
        Change this one value when the production engine URL changes. */
     const ENGINE_URL = 'https://ideaordie.github.io/Crowd-Funning/';
 
@@ -748,7 +748,7 @@ a.primary,
 
 
 <style>
-/* v1.2.9 — animated foundation → branching → survival → final result */
+/* v1.3.0 — animated foundation → branching → survival → final result */
 .mutation-stage{
   width:100%;
   max-width:760px;
@@ -1021,7 +1021,7 @@ a.primary,
 
 
 <style>
-/* v1.2.9 direct replacement: foundation → branch → shed → branch → result */
+/* v1.3.0 direct replacement: foundation → branch → shed → branch → result */
 .mutation-demo-v126{
   width:100%;
   max-width:760px;
@@ -1248,7 +1248,7 @@ a.primary,
 
 
 <style>
-/* v1.2.9 contained second-page branching animation */
+/* v1.3.0 contained second-page branching animation */
 .contained-branch-demo{
   width:100%;
   max-width:680px;
@@ -1465,7 +1465,7 @@ a.primary,
 
 
 <style>
-/* v1.2.9 — keep page 2 panel compact and scale animation inside it */
+/* v1.3.0 — keep page 2 panel compact and scale animation inside it */
 .panel:has(.contained-branch-demo){
   max-height:560px !important;
   min-height:0 !important;
@@ -1556,7 +1556,7 @@ a.primary,
 
 
 <style>
-/* v1.2.9 — smaller/faster second-page animation with longer readable final result */
+/* v1.3.0 — smaller/faster second-page animation with longer readable final result */
 .panel:has(.contained-branch-demo){
   max-height:540px !important;
   padding-top:30px !important;
@@ -1655,6 +1655,37 @@ a.primary,
     transform:scale(.62) !important;
     margin-bottom:-126px !important;
   }
+}
+</style>
+
+
+<style>
+/* v1.3.0 — ensure CONTINUE is always clickable during animation */
+.contained-branch-demo,
+.contained-animation-window,
+.contained-branches,
+.bulb-node,
+.bulb-node svg,
+.contained-foundation,
+.contained-result{
+  pointer-events:none !important;
+}
+
+.actions,
+.buttons,
+button,
+a,
+.cta,
+.primary,
+.secondary{
+  position:relative !important;
+  z-index:9999 !important;
+  pointer-events:auto !important;
+}
+
+.panel:has(.contained-branch-demo) .actions,
+.panel:has(.contained-branch-demo) .buttons{
+  margin-top:10px !important;
 }
 </style>
 
