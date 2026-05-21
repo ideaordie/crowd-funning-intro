@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="CROWD FUNNING — many ideas become one." />
-  <title>CROWD FUNNING Invite v1.2.0</title>
+  <title>CROWD FUNNING Invite v1.2.1</title>
   <style>
     :root{
       --bg:#030306;
@@ -89,7 +89,7 @@ button:first-child,
 </head>
 <body>
   <!--
-    CROWD FUNNING Invite v1.2.0
+    CROWD FUNNING Invite v1.2.1
     Recommended GitHub repository structure:
 
     Crowd-Funning-Invite/
@@ -105,7 +105,7 @@ button:first-child,
   <div class="noise" aria-hidden="true"></div>
   <div class="brand">CROWD <span>FUNNING</span></div>
   <a class="enter-now engine-link" href="https://ideaordie.github.io/Crowd-Funning/">Skip intro → Start developing</a>
-  <div class="version">v1.2.0</div>
+  <div class="version">v1.2.1</div>
 
   <main class="app" aria-live="polite">
     <section class="shell" aria-label="CROWD FUNNING invite journey">
@@ -157,7 +157,7 @@ button:first-child,
           <a class="choice engine-link" href="https://ideaordie.github.io/Crowd-Funning/#trending"><div><strong>TRENDING</strong><br><span>Watch paths compete.</span></div><div class="arrow">→</div></a>
           <a class="choice engine-link" href="https://ideaordie.github.io/Crowd-Funning/#completed"><div><strong>COMPLETED</strong><br><span>Browse finished results.</span></div><div class="arrow">→</div></a>
         </div>
-        <div class="repo-note">Standalone invite app. The engine remains separate and protected.</div>
+        <div class="repo-note">.</div>
         <div class="actions"></div>
       </article>
     </section>
@@ -166,7 +166,7 @@ button:first-child,
   </main>
 
   <script>
-    /* CROWD FUNNING Invite v1.2.0
+    /* CROWD FUNNING Invite v1.2.1
        Change this one value when the production engine URL changes. */
     const ENGINE_URL = 'https://ideaordie.github.io/Crowd-Funning/';
 
@@ -304,6 +304,38 @@ button:first-child,
     text-shadow:
       0 0 10px rgba(255,255,255,.22),
       0 0 24px rgba(255,255,255,.10);
+}
+</style>
+
+
+<style>
+@keyframes ctaGradientDrift{
+  0%{
+    background-position:0% 50%;
+    box-shadow:0 0 22px rgba(255,61,242,.28),0 0 44px rgba(52,233,255,.10);
+  }
+  50%{
+    background-position:100% 50%;
+    box-shadow:0 0 30px rgba(52,233,255,.28),0 0 54px rgba(255,61,242,.12);
+  }
+  100%{
+    background-position:0% 50%;
+    box-shadow:0 0 22px rgba(255,61,242,.28),0 0 44px rgba(52,233,255,.10);
+  }
+}
+
+button,
+a.primary,
+.primary,
+.begin{
+  background-size:260% 260% !important;
+}
+
+button:not(.ghost):not(.secondary),
+a.primary,
+.primary,
+.begin{
+  animation:ctaGradientDrift 6.5s ease-in-out infinite !important;
 }
 </style>
 
