@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="CROWD FUNNING — many ideas become one." />
+  <title>CROWD FUNNING Invite v1.1.1</title>
+  <style>
+    :root{
+      --bg:#030306;
+      --bg2:#070710;
+      --panel:rgba(12,12,18,.78);
+      --panel-strong:rgba(20,20,30,.70);
+      --line:rgba(255,255,255,.14);
+      --line-hot:rgba(255,61,242,.32);
+      --text:#f7f7fb;
+      --muted:rgba(247,247,251,.66);
+      --soft:rgba(247,247,251,.42);
+      --hot:#ff3df2;
+      --cyan:#34e9ff;
+      --gold:#ffd166;
+      --green:#75ffb4;
+      --radius:28px;
+      --shadow:0 0 40px rgba(255,61,242,.16),0 0 80px rgba(52,233,255,.10);
+      --engine-url:"https://ideaordie.github.io/Crowd-Funning/";
+    }
+
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden}
+    body:before{content:"";position:fixed;inset:-25%;background:radial-gradient(circle at 18% 22%,rgba(255,61,242,.24),transparent 28%),radial-gradient(circle at 82% 12%,rgba(52,233,255,.22),transparent 26%),radial-gradient(circle at 50% 95%,rgba(255,209,102,.12),transparent 32%),linear-gradient(180deg,#050508,#010102);filter:blur(8px);animation:bgShift 18s ease-in-out infinite alternate;z-index:-4}
+    body:after{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(circle at center,#000 0%,transparent 75%);opacity:.6;z-index:-3}
+    @keyframes bgShift{from{transform:translate3d(-1.5%,0,0) scale(1)}to{transform:translate3d(1.5%,-1%,0) scale(1.04)}}
+
+    canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacity:.88}
+    .noise{position:fixed;inset:0;pointer-events:none;z-index:-1;background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,.035) 0 1px,transparent 1px 4px);mix-blend-mode:overlay;opacity:.12;animation:flicker 4s steps(2) infinite}
+    @keyframes flicker{50%{opacity:.07}}
+
+    .app{height:100%;display:grid;place-items:center;padding:22px;position:relative}
+    .brand{position:fixed;top:max(18px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);letter-spacing:.28em;font-size:11px;font-weight:900;color:rgba(255,255,255,.62);z-index:5;white-space:nowrap}.brand span{color:#fff;text-shadow:0 0 18px rgba(52,233,255,.35)}
+    .version{position:fixed;right:16px;bottom:max(12px,env(safe-area-inset-bottom));font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.28);z-index:5}
+    .enter-now{position:fixed;right:14px;top:max(14px,env(safe-area-inset-top));z-index:7;text-decoration:none;color:rgba(255,255,255,.88);font-size:10px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:10px 12px;background:rgba(0,0,0,.28);backdrop-filter:blur(14px);box-shadow:0 0 18px rgba(52,233,255,.08);transition:.2s}
+    .enter-now:hover{border-color:rgba(52,233,255,.45);box-shadow:0 0 24px rgba(52,233,255,.18)}
+
+    .shell{width:min(520px,100%);min-height:min(680px,calc(100vh - 64px));display:flex;align-items:center;justify-content:center}
+    .panel{width:100%;position:absolute;max-width:520px;padding:34px 24px 24px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--panel),rgba(5,5,10,.70));box-shadow:var(--shadow);backdrop-filter:blur(18px);opacity:0;transform:translateY(18px) scale(.98);pointer-events:none;transition:opacity .45s ease,transform .45s cubic-bezier(.2,.85,.2,1)}
+    .panel.active{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+    .eyebrow{font-size:11px;font-weight:900;letter-spacing:.22em;color:var(--cyan);text-transform:uppercase;margin-bottom:14px;text-align:center;text-shadow:0 0 18px rgba(52,233,255,.35)}
+    h1{font-size:clamp(43px,12vw,72px);line-height:.88;margin:0;text-align:center;letter-spacing:-.08em;font-weight:950;text-wrap:balance}.glow{text-shadow:0 0 24px rgba(255,61,242,.22),0 0 50px rgba(52,233,255,.18)}
+    h2{font-size:clamp(28px,8vw,45px);line-height:.96;margin:0;text-align:center;letter-spacing:-.055em;font-weight:950;text-wrap:balance}
+    p{margin:16px auto 0;max-width:360px;text-align:center;color:var(--muted);font-size:15px;line-height:1.55}.small{font-size:12px;color:var(--soft);letter-spacing:.05em;text-transform:uppercase;font-weight:800}
+
+    .steps{position:fixed;bottom:max(22px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:6}.dot{width:7px;height:7px;border-radius:99px;background:rgba(255,255,255,.22);transition:.3s}.dot.on{width:28px;background:linear-gradient(90deg,var(--hot),var(--cyan));box-shadow:0 0 16px rgba(52,233,255,.4)}
+    .actions{display:grid;gap:12px;margin-top:26px}.btn{border:1px solid rgba(255,255,255,.16);border-radius:18px;background:rgba(255,255,255,.07);color:#fff;padding:16px 18px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;text-align:center;font-size:13px;transition:transform .2s,border-color .2s,background .2s,box-shadow .2s}.btn:hover{transform:translateY(-1px);border-color:rgba(52,233,255,.45);background:rgba(52,233,255,.10);box-shadow:0 0 24px rgba(52,233,255,.16)}.btn.primary{background:linear-gradient(90deg,rgba(255,61,242,.92),rgba(52,233,255,.88));border-color:transparent;box-shadow:0 0 30px rgba(255,61,242,.22),0 0 36px rgba(52,233,255,.18)}.btn.ghost{background:transparent;color:var(--muted)}
+
+    .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px}.mini div{border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:10px 8px;text-align:center;background:rgba(255,255,255,.04);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.58);font-weight:900}.mini b{display:block;font-size:18px;color:#fff;letter-spacing:0;margin-bottom:2px}
+    .artifact{margin:22px auto 0;border:1px solid rgba(255,255,255,.13);border-radius:22px;padding:18px;background:rgba(0,0,0,.24);position:relative;overflow:hidden}.artifact:before{content:"";position:absolute;inset:-1px;background:linear-gradient(90deg,transparent,rgba(52,233,255,.10),transparent);animation:scan 3s linear infinite}@keyframes scan{from{transform:translateX(-80%)}to{transform:translateX(80%)}}
+    .seed,.final{position:relative;border-radius:16px;padding:14px;background:rgba(255,255,255,.06);font-weight:850;line-height:1.25}.seed{border:1px solid rgba(52,233,255,.18)}.final{border:1px solid rgba(255,209,102,.26);margin-top:12px;color:#fff}.branches{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 4px}.branch{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:15px;padding:11px;background:rgba(255,255,255,.045);font-size:12px;color:rgba(255,255,255,.72);line-height:1.28;animation:rise .7s ease both}.branch:nth-child(2){animation-delay:.16s}.branch:nth-child(3){grid-column:1/3;animation-delay:.3s}.branch:after{content:"";position:absolute;width:8px;height:8px;border-radius:99px;right:10px;top:10px;background:var(--green);box-shadow:0 0 14px var(--green);opacity:.8}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .line{height:38px;width:1px;background:linear-gradient(180deg,rgba(52,233,255,.5),rgba(255,61,242,.5));margin:10px auto;box-shadow:0 0 18px rgba(52,233,255,.35);animation:grow 1.6s ease-in-out infinite alternate}@keyframes grow{from{height:20px;opacity:.55}to{height:46px;opacity:1}}
+
+    .choices{display:grid;gap:12px;margin-top:23px}.choice{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:16px;background:rgba(255,255,255,.055);text-decoration:none;color:#fff;transition:.2s}.choice:hover{transform:translateY(-1px);border-color:rgba(52,233,255,.35);background:rgba(52,233,255,.07)}.choice strong{font-size:14px;letter-spacing:.08em}.choice span{font-size:12px;color:var(--muted)}.arrow{font-size:22px;color:var(--cyan);text-shadow:0 0 16px rgba(52,233,255,.45)}
+    .repo-note{margin-top:18px;border-top:1px solid rgba(255,255,255,.08);padding-top:14px;color:rgba(255,255,255,.38);font-size:11px;line-height:1.4;text-align:center}
+
+    @media(max-width:480px){.enter-now{left:50%;right:auto;top:auto;bottom:calc(max(12px,env(safe-area-inset-bottom)) + 26px);transform:translateX(-50%);white-space:nowrap}.version{display:none}.steps{bottom:max(13px,env(safe-area-inset-bottom))}.panel{padding:30px 20px 22px}.brand{font-size:10px}}
+    @media(max-height:720px){.panel{padding:25px 20px 20px}.shell{min-height:calc(100vh - 46px)}p{font-size:14px}.artifact{margin-top:15px}.actions{margin-top:18px}.brand{top:12px}.steps{display:none}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}canvas{opacity:.25}}
+  </style>
+</head>
+<body>
+  <!--
+    CROWD FUNNING Invite v1.1.1
+    Recommended GitHub repository structure:
+
+    Crowd-Funning-Invite/
+    ├── index.html       ← this file
+    ├── assets/          ← optional future images/logos/backgrounds
+    └── README.md
+
+    Link target:
+    Update ENGINE_URL below when the production engine URL changes.
+  -->
+
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="brand">CROWD <span>FUNNING</span></div>
+  <a class="enter-now engine-link" href="https://ideaordie.github.io/Crowd-Funning/">Skip intro → Start developing</a>
+  <div class="version">v1.1.1</div>
+
+  <main class="app" aria-live="polite">
+    <section class="shell" aria-label="CROWD FUNNING invite journey">
+      <article class="panel active" data-panel="0">
+        <div class="eyebrow">Invite</div>
+        <h1 class="glow">MANY IDEAS<br>BECOME ONE</h1>
+        <p>Strangers build evolving paths from a single spark. The best continuations survive. The strangest outcomes become artifacts.</p>
+        <div class="mini" aria-hidden="true"><div><b>1</b>Start</div><div><b>∞</b>Branch</div><div><b>1</b>Evolve</div></div>
+        <div class="actions"><button class="btn primary" data-next>Begin</button></div>
+      </article>
+
+      <article class="panel" data-panel="1">
+        <div class="eyebrow">Example Path</div>
+        <h2>One foundation mutates.</h2>
+        <div class="artifact">
+          <div class="seed">A restaurant where every waiter is legally required to lie.</div>
+          <div class="line" aria-hidden="true"></div>
+          <div class="branches">
+            <div class="branch">Customers learn to order by reverse psychology.</div>
+            <div class="branch">Critics call it the only honest restaurant left.</div>
+            <div class="branch">The menu becomes a national intelligence test.</div>
+          </div>
+          <div class="final">Final artifact: the restaurant becomes the world’s most trusted news source.</div>
+        </div>
+        <p class="small">Built collaboratively by strangers.</p>
+        <div class="actions"><button class="btn primary" data-next>Continue</button><button class="btn ghost" data-back>Back</button></div>
+      </article>
+
+      <article class="panel" data-panel="2">
+        <div class="eyebrow">Invitation</div>
+        <h2>Nobody knows where the idea ends.</h2>
+        <p>Start a foundation, continue a branch, or explore what the crowd has already completed.</p>
+        <div class="choices">
+          <a class="choice engine-link" href="https://ideaordie.github.io/Crowd-Funning/"><div><strong>START DEVELOPING</strong><br><span>Enter the creation engine.</span></div><div class="arrow">→</div></a>
+          <a class="choice engine-link" href="https://ideaordie.github.io/Crowd-Funning/#trending"><div><strong>TRENDING</strong><br><span>Watch paths compete.</span></div><div class="arrow">→</div></a>
+          <a class="choice engine-link" href="https://ideaordie.github.io/Crowd-Funning/#completed"><div><strong>COMPLETED</strong><br><span>Browse finished artifacts.</span></div><div class="arrow">→</div></a>
+        </div>
+        <div class="repo-note">Standalone invite app. The engine remains separate and protected.</div>
+        <div class="actions"><button class="btn ghost" data-back>Replay</button></div>
+      </article>
+    </section>
+
+    <div class="steps" aria-hidden="true"><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
+  </main>
+
+  <script>
+    /* CROWD FUNNING Invite v1.1.1
+       Change this one value when the production engine URL changes. */
+    const ENGINE_URL = 'https://ideaordie.github.io/Crowd-Funning/';
+
+    document.querySelectorAll('.engine-link').forEach(link => {
+      const href = link.getAttribute('href') || '';
+      if (href.includes('#trending')) link.href = ENGINE_URL + '#trending';
+      else if (href.includes('#completed')) link.href = ENGINE_URL + '#completed';
+      else link.href = ENGINE_URL;
+      link.addEventListener('click', () => localStorage.setItem('crowdFunningInviteSeen', 'true'));
+    });
+
+    const panels = [...document.querySelectorAll('.panel')];
+    const dots = [...document.querySelectorAll('.dot')];
+    let step = 0;
+
+    function show(n){
+      step = Math.max(0, Math.min(2, n));
+      panels.forEach((p,i)=>p.classList.toggle('active', i === step));
+      dots.forEach((d,i)=>d.classList.toggle('on', i === step));
+      if(step === 2) localStorage.setItem('crowdFunningInviteSeen','true');
+    }
+
+    document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>show(step+1)));
+    document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=> step===2 ? show(0) : show(step-1)));
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(step+1); if(e.key==='ArrowLeft')show(step-1)});
+
+    let touchStartX=0;
+    document.addEventListener('touchstart',e=>touchStartX=e.touches[0].clientX,{passive:true});
+    document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStartX;if(Math.abs(dx)>55)show(step+(dx<0?1:-1))},{passive:true});
+
+    const canvas = document.getElementById('field');
+    const ctx = canvas.getContext('2d');
+    let w,h,dpr,nodes=[];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resize(){
+      dpr=Math.min(devicePixelRatio||1,2);
+      w=canvas.width=innerWidth*dpr;
+      h=canvas.height=innerHeight*dpr;
+      canvas.style.width=innerWidth+'px';
+      canvas.style.height=innerHeight+'px';
+      nodes=Array.from({length:reduceMotion?28:Math.min(82,Math.floor(innerWidth/9))},()=>({
+        x:Math.random()*w,
+        y:Math.random()*h,
+        vx:(Math.random()-.5)*.28*dpr,
+        vy:(Math.random()-.5)*.28*dpr,
+        r:(Math.random()*1.7+0.8)*dpr,
+        p:Math.random()*6.28
+      }));
+    }
+
+    addEventListener('resize',resize);
+    resize();
+
+    function draw(t){
+      ctx.clearRect(0,0,w,h);
+      nodes.forEach(a=>{
+        if(!reduceMotion){
+          a.x+=a.vx+Math.sin(t*.0006+a.p)*.04*dpr;
+          a.y+=a.vy+Math.cos(t*.0005+a.p)*.04*dpr;
+          if(a.x<0||a.x>w)a.vx*=-1;
+          if(a.y<0||a.y>h)a.vy*=-1;
+        }
+      });
+
+      for(let i=0;i<nodes.length;i++){
+        for(let j=i+1;j<nodes.length;j++){
+          const a=nodes[i], b=nodes[j], dx=a.x-b.x, dy=a.y-b.y, dist=Math.hypot(dx,dy), max=170*dpr;
+          if(dist<max){
+            const o=(1-dist/max)*.18;
+            ctx.strokeStyle=`rgba(52,233,255,${o})`;
+            ctx.lineWidth=.8*dpr;
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+          }
+        }
+      }
+
+      nodes.forEach((a,i)=>{
+        const pulse=(Math.sin(t*.002+a.p)+1)/2;
+        ctx.fillStyle=i%7===0?`rgba(255,61,242,${.35+pulse*.35})`:`rgba(255,255,255,${.24+pulse*.18})`;
+        ctx.shadowBlur=18*dpr;
+        ctx.shadowColor=i%7===0?'rgba(255,61,242,.55)':'rgba(52,233,255,.45)';
+        ctx.beginPath(); ctx.arc(a.x,a.y,a.r+(i%7===0?pulse*2*dpr:0),0,Math.PI*2); ctx.fill();
+        ctx.shadowBlur=0;
+      });
+
+      if(!reduceMotion) requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  </script>
+</body>
+</html>
