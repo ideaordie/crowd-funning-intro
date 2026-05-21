@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="CROWD FUNNING — many ideas become one." />
-  <title>CROWD FUNNING Invite v1.3.2</title>
+  <title>CROWD FUNNING Invite v1.3.3</title>
   <style>
     :root{
       --bg:#030306;
@@ -89,7 +89,7 @@ button:first-child,
 </head>
 <body>
   <!--
-    CROWD FUNNING Invite v1.3.2
+    CROWD FUNNING Invite v1.3.3
     Recommended GitHub repository structure:
 
     Crowd-Funning-Invite/
@@ -105,7 +105,7 @@ button:first-child,
   <div class="noise" aria-hidden="true"></div>
   <div class="brand">CROWD <span>FUNNING</span></div>
   <a class="enter-now engine-link" href="https://ideaordie.github.io/Crowd-Funning/">Skip intro → Start developing</a>
-  <div class="version">v1.3.2</div>
+  <div class="version">v1.3.3</div>
 
   <main class="app" aria-live="polite">
     <section class="shell" aria-label="CROWD FUNNING invite journey">
@@ -197,7 +197,7 @@ button:first-child,
   </main>
 
   <script>
-    /* CROWD FUNNING Invite v1.3.2
+    /* CROWD FUNNING Invite v1.3.3
        Change this one value when the production engine URL changes. */
     const ENGINE_URL = 'https://ideaordie.github.io/Crowd-Funning/';
 
@@ -748,7 +748,7 @@ a.primary,
 
 
 <style>
-/* v1.3.2 — animated foundation → branching → survival → final result */
+/* v1.3.3 — animated foundation → branching → survival → final result */
 .mutation-stage{
   width:100%;
   max-width:760px;
@@ -1021,7 +1021,7 @@ a.primary,
 
 
 <style>
-/* v1.3.2 direct replacement: foundation → branch → shed → branch → result */
+/* v1.3.3 direct replacement: foundation → branch → shed → branch → result */
 .mutation-demo-v126{
   width:100%;
   max-width:760px;
@@ -1248,7 +1248,7 @@ a.primary,
 
 
 <style>
-/* v1.3.2 contained second-page branching animation */
+/* v1.3.3 contained second-page branching animation */
 .contained-branch-demo{
   width:100%;
   max-width:680px;
@@ -1465,7 +1465,7 @@ a.primary,
 
 
 <style>
-/* v1.3.2 — keep page 2 panel compact and scale animation inside it */
+/* v1.3.3 — keep page 2 panel compact and scale animation inside it */
 .panel:has(.contained-branch-demo){
   max-height:560px !important;
   min-height:0 !important;
@@ -1556,7 +1556,7 @@ a.primary,
 
 
 <style>
-/* v1.3.2 — smaller/faster second-page animation with longer readable final result */
+/* v1.3.3 — smaller/faster second-page animation with longer readable final result */
 .panel:has(.contained-branch-demo){
   max-height:540px !important;
   padding-top:30px !important;
@@ -1660,7 +1660,7 @@ a.primary,
 
 
 <style>
-/* v1.3.2 — ensure CONTINUE is always clickable during animation */
+/* v1.3.3 — ensure CONTINUE is always clickable during animation */
 .contained-branch-demo,
 .contained-animation-window,
 .contained-branches,
@@ -1691,7 +1691,7 @@ a,
 
 
 <style>
-/* v1.3.2 — fixed navigation + page 2 dynamic height without clipping */
+/* v1.3.3 — fixed navigation + page 2 dynamic height without clipping */
 .contained-branch-demo,
 .contained-animation-window,
 .contained-branches,
@@ -1802,96 +1802,83 @@ a{
 </style>
 
 
+
+
+
 <script>
 (function(){
   const ENGINE_URL = "https://ideaordie.github.io/Crowd-Funning/";
 
-  function visible(el){
-    if(!el) return false;
-    const s = getComputedStyle(el);
-    const r = el.getBoundingClientRect();
-    return s.display !== "none" && s.visibility !== "hidden" && r.width > 0 && r.height > 0;
-  }
-
-  function currentStep(){
-    const text = document.body.innerText || "";
-    if(text.includes("A restaurant where every waiter is required to lie.")) return 2;
-    if(text.includes("Nobody knows where ideas end") || text.includes("START DEVELOPING")) return 3;
-    return 1;
-  }
-
-  function advanceExistingFlow(){
-    if(typeof window.nextStep === "function"){ window.nextStep(); return true; }
-    if(typeof window.next === "function"){ window.next(); return true; }
-    if(typeof window.goNext === "function"){ window.goNext(); return true; }
-    if(typeof window.advance === "function"){ window.advance(); return true; }
-
-    const steps = Array.from(document.querySelectorAll("[data-step], .step, .screen, .slide, .page, section"));
-    const active = steps.find(visible);
-    if(active){
-      const idx = steps.indexOf(active);
-      if(idx >= 0 && steps[idx+1]){
-        active.style.display = "none";
-        steps[idx+1].style.display = "";
-        return true;
-      }
-    }
-    return false;
-  }
-
-  function buttonLabel(el){
+  function label(el){
     return (el.textContent || "").replace(/\s+/g," ").trim().toUpperCase();
   }
 
-  // Remove engine hrefs from BEGIN / CONTINUE only. Final CTAs keep engine links.
+  function advanceInvite(){
+    if(typeof window.nextStep === "function"){
+      window.nextStep();
+      return;
+    }
+    if(typeof nextStep === "function"){
+      nextStep();
+      return;
+    }
+  }
+
   document.querySelectorAll("a, button").forEach(el => {
-    const label = buttonLabel(el);
-    if(label === "BEGIN" || label === "CONTINUE" || label === "ENTER"){
+    const txt = label(el);
+
+    if(txt === "BEGIN" || txt === "CONTINUE" || txt === "ENTER"){
       if(el.tagName === "A"){
         el.removeAttribute("href");
         el.setAttribute("role","button");
       }
-      el.dataset.inviteNext = "true";
+      el.onclick = function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        advanceInvite();
+        return false;
+      };
+    }
+
+    if(txt.includes("START DEVELOPING") || txt === "DEVELOP" || txt === "TRENDING" || txt === "COMPLETED"){
+      if(el.tagName === "A"){
+        el.href = ENGINE_URL;
+      }else{
+        el.onclick = function(event){
+          event.preventDefault();
+          event.stopPropagation();
+          window.location.href = ENGINE_URL;
+          return false;
+        };
+      }
     }
   });
-
-  document.addEventListener("click", function(e){
-    const control = e.target.closest("button, a, [role='button']");
-    if(!control) return;
-
-    const label = buttonLabel(control);
-    const step = currentStep();
-
-    if(label === "BEGIN" || label === "CONTINUE" || label === "ENTER" || control.dataset.inviteNext === "true"){
-      e.preventDefault();
-      e.stopPropagation();
-      if(step < 3){
-        advanceExistingFlow();
-      } else {
-        window.location.href = ENGINE_URL;
-      }
-      return;
-    }
-
-    const finalAppCTA =
-      label.includes("START DEVELOPING") ||
-      label === "DEVELOP" ||
-      label === "TRENDING" ||
-      label === "COMPLETED" ||
-      label.includes("ENTER CROWD FUNNING");
-
-    if(finalAppCTA){
-      e.preventDefault();
-      e.stopPropagation();
-      if(step < 3){
-        advanceExistingFlow();
-      } else {
-        window.location.href = ENGINE_URL;
-      }
-    }
-  }, true);
 })();
 </script>
+
+
+<style>
+/* v1.3.3 — keep first-page intro copy no wider than the main headline */
+.sub,
+.subtitle,
+.description,
+.hero-copy,
+.intro-copy,
+p{
+  max-width:min(100%, 430px);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.panel:has(.headline) .sub,
+.panel:has(.headline) .subtitle,
+.panel:has(.headline) .description,
+.panel:has(.headline) .hero-copy,
+.panel:has(.headline) .intro-copy,
+.panel:has(.headline) p{
+  max-width:clamp(300px, 52vw, 430px) !important;
+}
+</style>
 
 </body>
 </html>
