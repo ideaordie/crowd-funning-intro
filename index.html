@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>CROWD FUNNING Invite v1.4.7</title>
+<title>CROWD FUNNING Invite v1.5.1</title>
 <style>
 :root{
   --bg:#030308;
@@ -674,7 +674,7 @@ button{
 
         <div class="demo-card result-card">
           <div class="demo-label">FINAL RESULT</div>
-          <div class="demo-text">The restaurant becomes the world’s most trusted news source.</div>
+          <div class="demo-text" id="finalResultText">The restaurant becomes the world’s most trusted news source.</div>
         </div>
       </div>
 
@@ -705,7 +705,7 @@ button{
   <div class="dot" id="dot3"></div>
 </div>
 
-<div class="version">v1.4.7</div>
+<div class="version">v1.5.1</div>
 
 <script>
 (function(){
@@ -752,7 +752,7 @@ button{
 </script>
 
 <style>
-/* v1.4.7 — compact layout so all content fits inside panels */
+/* v1.5.1 — compact layout so all content fits inside panels */
 .panel{
   min-height:clamp(420px,52vh,570px) !important;
   max-height:calc(100vh - 235px) !important;
@@ -968,7 +968,7 @@ h1{
 
 
 <style>
-/* v1.4.7 — brand + corrected branch animation timing */
+/* v1.5.1 — brand + corrected branch animation timing */
 .brand{
   letter-spacing:.26em !important;
 }
@@ -1076,7 +1076,7 @@ h1{
 
 
 <style>
-/* v1.4.7 — only correct branch endpoint lightbulb positions */
+/* v1.5.1 — only correct branch endpoint lightbulb positions */
 .bulb.root{left:50% !important;top:7.9% !important;}
 .bulb.l1{left:34.6% !important;top:50.2% !important;}
 .bulb.r1{left:65.4% !important;top:50.2% !important;}
@@ -1086,7 +1086,7 @@ h1{
 
 
 <style>
-/* v1.4.7 — unify all panel headline styles */
+/* v1.5.1 — unify all panel headline styles */
 h1,
 .page-title{
   font-size:clamp(42px,8vw,86px) !important;
@@ -1119,7 +1119,7 @@ h1,
 
 
 <style>
-/* v1.4.7 — reduce panel headline size by 30% */
+/* v1.5.1 — reduce panel headline size by 30% */
 h1,
 .page-title{
   font-size:clamp(29px,5.6vw,60px) !important;
@@ -1140,7 +1140,7 @@ h1,
   }
 }
 
-/* v1.4.7 — align lightbulb centers to SVG branch endpoints */
+/* v1.5.1 — align lightbulb centers to SVG branch endpoints */
 .bulb.root{left:50% !important;top:7.9% !important;}
 .bulb.l1{left:20.3% !important;top:50.2% !important;}
 .bulb.r1{left:79.7% !important;top:50.2% !important;}
@@ -1150,7 +1150,7 @@ h1,
 
 
 <style>
-/* v1.4.7 — 2x faster branch animation with 2-second final result hold */
+/* v1.5.1 — 2x faster branch animation with 2-second final result hold */
 .b-root,
 .b-left1,
 .b-right1,
@@ -1244,6 +1244,62 @@ h1,
   100%{opacity:0;transform:translateY(-8px) scale(.99)}
 }
 </style>
+
+
+<style>
+/* v1.5.1 — longer final result hold and 3-result cycle */
+.b-root,
+.b-left1,
+.b-right1,
+.b-survive,
+.b-left2,
+.b-right2,
+.b-final,
+.bulb.root,
+.bulb.l1,
+.bulb.r1,
+.bulb.l2,
+.bulb.r2,
+.result-card{
+  animation-duration:5s !important;
+}
+
+/* Keep the branch motion fast, then leave room for the result to hold longer */
+@keyframes bFinal143{
+  0%,50%{opacity:0;stroke-dashoffset:620}
+  60%,68%{opacity:1;stroke-dashoffset:0}
+  82%,100%{opacity:0;stroke-dashoffset:0}
+}
+
+/* Final result now holds for roughly twice as long */
+@keyframes resultHold143{
+  0%,74%{opacity:0;transform:translateY(10px) scale(.98)}
+  82%,99%{opacity:1;transform:translateY(0) scale(1)}
+  100%{opacity:0;transform:translateY(-8px) scale(.99)}
+}
+</style>
+
+
+<script>
+(function(){
+  const finalResults = [
+    "The restaurant becomes the world’s top news source.",
+    "The restaurant becomes politics’ favorite lie detector.",
+    "The restaurant becomes the internet’s best dating app."
+  ];
+
+  const resultText = document.getElementById("finalResultText");
+  const resultCard = document.querySelector(".result-card");
+  let resultIndex = 0;
+
+  if(resultText && resultCard){
+    resultCard.addEventListener("animationiteration", function(){
+      resultIndex = (resultIndex + 1) % finalResults.length;
+      resultText.textContent = finalResults[resultIndex];
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
