@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>CROWD FUNNING Invite v1.4.5</title>
+<title>CROWD FUNNING Invite v1.4.6</title>
 <style>
 :root{
   --bg:#030308;
@@ -655,7 +655,7 @@ button{
         </div>
 
         <div class="branch-window">
-          <svg viewBox="0 0 620 430" aria-hidden="true">
+          <svg viewBox="0 0 620 430" preserveAspectRatio="none" aria-hidden="true">
             <path class="branch-line b-root" d="M310 34 C310 70 310 94 310 120"/>
             <path class="branch-line b-left1" d="M310 120 C224 140 174 172 126 216"/>
             <path class="branch-line b-right1" d="M310 120 C396 140 446 172 494 216"/>
@@ -705,7 +705,7 @@ button{
   <div class="dot" id="dot3"></div>
 </div>
 
-<div class="version">v1.4.5</div>
+<div class="version">v1.4.6</div>
 
 <script>
 (function(){
@@ -752,7 +752,7 @@ button{
 </script>
 
 <style>
-/* v1.4.5 — compact layout so all content fits inside panels */
+/* v1.4.6 — compact layout so all content fits inside panels */
 .panel{
   min-height:clamp(420px,52vh,570px) !important;
   max-height:calc(100vh - 235px) !important;
@@ -968,7 +968,7 @@ h1{
 
 
 <style>
-/* v1.4.5 — brand + corrected branch animation timing */
+/* v1.4.6 — brand + corrected branch animation timing */
 .brand{
   letter-spacing:.26em !important;
 }
@@ -1076,7 +1076,7 @@ h1{
 
 
 <style>
-/* v1.4.5 — only correct branch endpoint lightbulb positions */
+/* v1.4.6 — only correct branch endpoint lightbulb positions */
 .bulb.root{left:50% !important;top:7.9% !important;}
 .bulb.l1{left:34.6% !important;top:50.2% !important;}
 .bulb.r1{left:65.4% !important;top:50.2% !important;}
@@ -1086,7 +1086,7 @@ h1{
 
 
 <style>
-/* v1.4.5 — unify all panel headline styles */
+/* v1.4.6 — unify all panel headline styles */
 h1,
 .page-title{
   font-size:clamp(42px,8vw,86px) !important;
@@ -1115,6 +1115,37 @@ h1,
     font-size:clamp(38px,7vw,72px) !important;
   }
 }
+</style>
+
+
+<style>
+/* v1.4.6 — reduce panel headline size by 30% */
+h1,
+.page-title{
+  font-size:clamp(29px,5.6vw,60px) !important;
+  line-height:.94 !important;
+}
+
+@media(max-width:700px){
+  h1,
+  .page-title{
+    font-size:clamp(31px,9.25vw,52px) !important;
+  }
+}
+
+@media(max-height:760px){
+  h1,
+  .page-title{
+    font-size:clamp(27px,4.9vw,50px) !important;
+  }
+}
+
+/* v1.4.6 — align lightbulb centers to SVG branch endpoints */
+.bulb.root{left:50% !important;top:7.9% !important;}
+.bulb.l1{left:20.3% !important;top:50.2% !important;}
+.bulb.r1{left:79.7% !important;top:50.2% !important;}
+.bulb.l2{left:21.3% !important;top:87.9% !important;}
+.bulb.r2{left:78.7% !important;top:87.9% !important;}
 </style>
 
 </body>
