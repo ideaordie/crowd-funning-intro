@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>CROWD FUNNING Invite v1.4.3</title>
+<title>CROWD FUNNING Invite v1.4.5</title>
 <style>
 :root{
   --bg:#030308;
@@ -646,7 +646,7 @@ button{
     </div>
 
     <div class="page" id="page2">
-      <h2 class="page-title">One foundation mutates.</h2>
+      <h2 class="page-title">ONE FOUNDATION<br>MUTATES</h2>
 
       <div class="demo">
         <div class="demo-card">
@@ -684,7 +684,7 @@ button{
     </div>
 
     <div class="page" id="page3">
-      <h2 class="page-title">Nobody knows<br>where ideas end.</h2>
+      <h2 class="page-title">NOBODY KNOWS<br>WHERE IDEAS END</h2>
 
       <div class="gate-grid">
         <div class="gate"><strong>DEVELOP</strong><span>Start or continue evolution.</span></div>
@@ -705,7 +705,7 @@ button{
   <div class="dot" id="dot3"></div>
 </div>
 
-<div class="version">v1.4.3</div>
+<div class="version">v1.4.5</div>
 
 <script>
 (function(){
@@ -752,7 +752,7 @@ button{
 </script>
 
 <style>
-/* v1.4.3 — compact layout so all content fits inside panels */
+/* v1.4.5 — compact layout so all content fits inside panels */
 .panel{
   min-height:clamp(420px,52vh,570px) !important;
   max-height:calc(100vh - 235px) !important;
@@ -968,7 +968,7 @@ h1{
 
 
 <style>
-/* v1.4.3 — brand + corrected branch animation timing */
+/* v1.4.5 — brand + corrected branch animation timing */
 .brand{
   letter-spacing:.26em !important;
 }
@@ -1071,6 +1071,49 @@ h1{
   0%,88%{opacity:0;transform:translateY(10px) scale(.98)}
   92%,98%{opacity:1;transform:translateY(0) scale(1)}
   100%{opacity:0;transform:translateY(-8px) scale(.99)}
+}
+</style>
+
+
+<style>
+/* v1.4.5 — only correct branch endpoint lightbulb positions */
+.bulb.root{left:50% !important;top:7.9% !important;}
+.bulb.l1{left:34.6% !important;top:50.2% !important;}
+.bulb.r1{left:65.4% !important;top:50.2% !important;}
+.bulb.l2{left:35.5% !important;top:87.9% !important;}
+.bulb.r2{left:64.5% !important;top:87.9% !important;}
+</style>
+
+
+<style>
+/* v1.4.5 — unify all panel headline styles */
+h1,
+.page-title{
+  font-size:clamp(42px,8vw,86px) !important;
+  line-height:.92 !important;
+  letter-spacing:-.075em !important;
+  font-weight:950 !important;
+  text-transform:uppercase !important;
+  text-shadow:0 0 32px rgba(139,124,255,.22) !important;
+  margin:0 auto !important;
+}
+
+.page-title{
+  margin-bottom:18px !important;
+}
+
+@media(max-width:700px){
+  h1,
+  .page-title{
+    font-size:clamp(44px,13.2vw,74px) !important;
+  }
+}
+
+@media(max-height:760px){
+  h1,
+  .page-title{
+    font-size:clamp(38px,7vw,72px) !important;
+  }
 }
 </style>
 
